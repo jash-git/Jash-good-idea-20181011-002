@@ -1,0 +1,165 @@
+﻿
+
+cont= ''+ 
+'<div class="social_idxbox stack clear-fix">'+
+'    <ul class="clear-fix">'+
+'      <li class="Line"><a href="http://www.chinatimes.com/handheld/line" target="_blank" title="LINE-中時電子報">LINE-中時電子報</a></li>'+
+'      <li class="youtube"><a href="https://www.youtube.com/user/ChinaTimes" target="_blank" title="YouTube-中時電子報">YouTube-中時電子報</a></li>'+
+'      <li class="WeChat"><a href="http://www.chinatimes.com/handheld/wechat" target="_blank" title="WeChat-中時電子報">WeChat-中時電子報t</a></li>'+
+'      <li class="weibo"><a href="http://weibo.com/chinatimessocial" target="_blank" title="weibo-中時電子報"> weibo-中時電子報</a></li>'+
+'      <li class="Snapchat"><a href="http://www.chinatimes.com/handheld/snapchat" target="_blank" title="Snapchat-中時電子報">Snapchat-中時電子報</a></li>'+
+'      <li class="Pinterest"><a href="http://www.pinterest.com/chinatimes/" target="_blank" title="Pinterest-中時電子報">Pinteres-中時電子報t</a></li>'+
+'      <li class="plurk"><a title="Plurk-中時電子報" target="_blank" href="http://www.plurk.com/honey_news"> Plurk-中時電子報</a></li>'+
+'      <li class="radio"><a rel="nofollow" href="https://itunes.apple.com/tw/podcast/zhong-shi-dian-zi-baoonline/id875756058?l=zh&mt=2" target="_blank" title="Online Radio-中時電子報">Online Radio-中時電子報</a></li>'+
+'    </ul>'+
+'</div>'+
+'<footer>'+
+'    <div class="mobile">'+ 
+'    <div class="stack clear-fix">'+ 
+'            <div class="mobile_box clear-fix">'+ 
+'                <ul>'+ 
+'                    <li><a href="http://www.chinatimes.com/handheld/want-want-mobile" title="旺旺中時"><span class="wwm"></span><p>旺旺中時</p></a></li>'+ 
+'                    <li><a href="http://www.chinatimes.com/handheld/want-want-tablet" title="翻爆"><span class="wwt"></span><p>翻爆</p></a></li>'+ 
+'                    <li><a href="http://www.chinatimes.com/sitemap" title="網站地圖"><span class="site_map"></span><p>網站地圖</p></a></li>'+ 
+'                    <li><a href="http://www.chinatimes.com/syndication/rss" title="RSS"><span class="rss"></span><p>RSS</p></a></li>'+ 
+'                </ul>'+ 
+'            </div>'+ 
+'    <div class="share_box clear-fix">'+ 
+'        <ul>'+ 
+'            <li><a href="http://www.facebook.com/CTfans" target="_blank"><span class="icon fb"></span><span class="title">中時電子報</span><span class="num">1,336,174</span></a></li>'+ 
+'            <li><a href="http://e.weibo.com/showbizct" target="_blank"><span class="icon weibo"></span><span class="title">新影視頻道</span><span class="num">1,552,785</span></a></li>'+ 
+'        </ul>'+ 
+'    </div>'+ 
+'    </div>'+ 
+'</div>'+
+'<div class="corpinfo stack clear-fix">'+ 
+
+' <div class="clumn1">'+
+'            <div class="title_name">客戶服務</div>'+
+'            <ul class="clear-fix">'+
+'            <li><a href="http://www.chinatimes.com/customer/ads" rel="nofollow">廣告刊登</a></li>'+
+'            <li><a href="http://edm.member.chinatimes.com/2006/chinese/index.html" target="_blank" rel="nofollow">報紙廣告</a></li>'+
+'            <li><a href="http://reader.chinatimes.com/" target="_blank" rel="nofollow">中國時報　客服信箱</a></li>'+
+'            <li><a href="http://tol.chinatimes.com/CT_NS/ctsearch.aspx" target="_blank" rel="nofollow">'+
+'                    檢索</a> <a href="http://sso.chinatimes.com/" target="_blank" rel="nofollow">會員</a></li>'+
+'            </ul></div>'+
+'        <div class="clumn2">'+
+'            <div class="title_name">'+
+'                網站介紹</div>'+
+'            <ul class="clear-fix">'+
+'                <li class="wantwant clear-fix"><img src="//cache.chinatimes.com/images/wantwant_logo_80x80.gif" title="旺旺集團logo" alt="旺旺集團logo" />'+
+'                    <img src="//cache.chinatimes.com/images/chinagroup_logo_80x80.gif" title="中時媒體集團logo" alt="中時媒體集團logo" />'+
+'                    <ul>'+
+'                        <li><a href="http://www.want-want.com/tw/" target="_blank" rel="nofollow">旺旺集團</a></li>'+
+'                        <li><a href="http://www.chinatimes.com/want-want-profile" target="_blank" rel="nofollow">'+
+'                            集團簡介</a></li>'+
+'                        <li><a href="http://www.chinatimes.com/customer/introduce" rel="nofollow">旺旺中時媒體集團</a></li>'+
+'                        <li><a href="http://www.chinatimes.com/customer/about" rel="nofollow">關於我們</a></li>'+
+'                    </ul>'+
+'                </li>'+
+'            </ul>'+
+'        </div>'+
+'        <div class="clumn3">'+
+'            <div class="title_name">'+
+'                網站服務</div>'+
+'            <ul class="clear-fix">'+
+'                <li><a href="http://www.chinatimes.com/customer/service" rel="nofollow">服務條款</a></li>'+
+'                <li><a href="http://www.chinatimes.com/customer/privacy" rel="nofollow">隱私權聲明</a></li>'+
+'                <li><a href="http://www.chinatimes.com/customer/contact" rel="nofollow">與我連絡</a></li>'+
+'                <li><a href="https://lecoin.cc/" rel="nofollow" target="_blank">一起做公益</a></li>'+
+'            </ul>'+
+'        </div>'+
+
+
+'</div> '+
+
+'<div class="fbox">'+
+'<div class="fbox_fit clear-fix stack">'+
+     
+'<div class="crp clear-fix">'+
+'<div class="title">合作夥伴</div>'+
+'<ul class="clear-fix">'+
+                 
+                	'<li><a href="http://hottopic.chinatimes.com" target="_blank" rel="nofollow">熱門話題</a></li>'+
+                    
+                	'<li><a href="http://album.chinatimes.com/" target="_blank" rel="nofollow">新聞專輯</a></li>'+
+                    
+                	'<li><a href="http://ivoting.chinatimes.com/" target="_blank" rel="nofollow">議題投票</a></li>'+
+                    
+                	'<li><a href="http://magazine.chinatimes.com/emba/6737/" target="_blank" rel="nofollow">EMBA</a></li>'+
+                    
+                	'<li><a href="http://magazine.chinatimes.com/moneyweekly/5012" target="_blank" rel="nofollow">理財周刊</a></li>'+
+                    
+                	'<li><a href="http://magazine.chinatimes.com/globalviews/6724/" target="_blank" rel="nofollow">遠見雜誌</a></li>'+
+                    
+                	'<li><a href="http://magazine.chinatimes.com/wealth-list" target="_blank" rel="nofollow">財訊雜誌</a></li>'+
+                    
+                	'<li><a href="http://magazine.chinatimes.com/managertoday/6678/" target="_blank" rel="nofollow">經理人月刊</a></li>'+
+                    
+                	'<li><a href="http://magazine.chinatimes.com/" target="_blank" rel="nofollow">網路書報攤</a></li>'+
+                    
+                	'<li><a href="https://www.facebook.com/wownewnews/" target="_blank" rel="nofollow">挖新鮮粉專</a></li>'+
+                    
+'</ul>'+
+'</div>'+
+             
+'<div class="rlx clear-fix">'+
+'<div class="title">輕鬆一下<span>by cteditor</span></div>'+
+'<ul class="clear-fix">'+
+                 
+'<li><a href="http://magazine.chinatimes.com/EnglishCareer/20181008000966-300224" target="_blank" rel="nofollow">在國外請假</a>'+
+'<a href="http://magazine.chinatimes.com/EnglishCareer/20181008000966-300224" target="_blank" rel="nofollow"><img src="https://img.chinatimes.com/newsphoto/2018-10-08/Miscellaneous/h20181008636746090351363416.jpg" title="在國外請假" alt="在國外請假" /></a>'+
+'<a href="http://magazine.chinatimes.com/EnglishCareer/20181008000966-300224" target="_blank" rel="nofollow">中英表達方式有差！</a></li>'+
+
+
+                    
+'<li><a href="https://magazine.chinatimes.com/lifeplus/20181003001513-300507" target="_blank" rel="nofollow">洪都拉斯</a>'+
+'<a href="https://magazine.chinatimes.com/lifeplus/20181003001513-300507" target="_blank" rel="nofollow"><img src="https://img.chinatimes.com/newsphoto/2018-10-03/Miscellaneous/h20181003636741699300578943.jpg" title="洪都拉斯" alt="洪都拉斯" /></a>'+
+'<a href="https://magazine.chinatimes.com/lifeplus/20181003001513-300507" target="_blank" rel="nofollow">倒吃甘蔗演藝路</a></li>'+
+
+
+                    
+'<li><a href="http://magazine.chinatimes.com/mind/20181008002471-300807" target="_blank" rel="nofollow">成為優秀領導者</a>'+
+'<a href="http://magazine.chinatimes.com/mind/20181008002471-300807" target="_blank" rel="nofollow"><img src="https://img.chinatimes.com/newsphoto/2018-10-08/Miscellaneous/h20181008636746091427453306.jpg" title="成為優秀領導者" alt="成為優秀領導者" /></a>'+
+'<a href="http://magazine.chinatimes.com/mind/20181008002471-300807" target="_blank" rel="nofollow">有效利用週三中午</a></li>'+
+
+
+                    
+'</ul>'+
+'</div>'+
+            
+'</div>'+
+'</div>'+
+'<div class="rwdfootermenu">'+
+'        <div class="searchfooter">'+
+'            <form class="searchfooterform" name="footerSearch" action="//www.chinatimes.com/search/result.htm">'+
+'            <input type="text" class="searchinputtext" name="q" placeholder="請輸入新聞搜尋關鍵字">'+
+'            <button class="searchinputbutton" type="submit"></button>'+
+'            </form>'+
+'        </div>'+
+'        <div class="new-box clear-fix">'+
+'            <ul class="clum_left">'+
+'                <li class="menu menu_realtime"><a href="http://www.chinatimes.com/realtimenews">即時</a></li>'+
+'                <li class="menu menu_papers"><a href="http://www.chinatimes.com/newspapers/">日報</a></li>'+
+'                <li class="menu menu_star"><a href="http://www.chinatimes.com/star/">娛樂</a></li>'+
+'                <li class="menu menu_blog"><a href="http://hottopic.chinatimes.com/">話題</a></li>'+
+'            </ul>'+
+'            <ul class="clum_right">'+
+'                <li class="menu menu_sport"><a href="http://www.chinatimes.com/sports/">運動</a></li>'+
+'                <li class="menu menu_mag"><a href="http://magazine.chinatimes.com/">書刊</a></li>'+
+'                <li class="menu menu_vote"><a href="http://ivoting.chinatimes.com/">投票</a></li>'+
+'                <li class="menu menu_more"><a href="http://www.chinatimes.com/syndication/robots">精選</a></li>'+
+'            </ul>'+
+'        </div>'+
+'    </div>'+
+'<div class="copyright">'+ 
+'<div class="stack clear-fix">'+ 
+'<address>'+ 
+'<a href="http://www.chinatimes.com/customer/infotimes" rel="nofollow"><img src="//cache.chinatimes.com/images/infotimes-logo187x46.gif" title="時報資訊股份有限公司logo" alt="時報資訊股份有限公司logo" /></a><span>&copy; 1995 - 2018 China Times Inc. 請尊重智慧財產權勿任意轉載違者依法必究。</span>'+ 
+'</address>'+ 
+'</div>'+ 
+'</div> '+
+'</footer>';
+
+
+ document.write(cont); 

@@ -1,0 +1,113 @@
+﻿var isNewVersion = $('.ad_carousel_box').length > 0 ? true : false;
+
+cont = '' +
+
+     (isNewVersion ? '' : '<section class="ad_carousel_box clear-fix">') +
+      '  <div class="headpic clear-fix">' +
+      '        <div id="ad-carousel">' +
+      '      <div class="ad-carousel-player">' +
+      '            <ul class="ad-carousel-list">' +
+      '          <li class="set">' +
+      '                <ul class="page">' +
+      '              <li>' +  
+      '                    <div class="kind">【特輯】</div>' +
+      '                    <div class="subtitle"><a href="//goo.gl/RRfSbP" target="_blank">全家高纖飲食攻略</a></div>' +
+      '                    <div class="title"><a href="//goo.gl/RRfSbP" target="_blank">讓小孩不挑食的高纖飲食指南</a></div>' +        
+      '                  </li>' +
+      '              <li>' +
+      '                    <div class="kind">【特輯】</div>' +
+      '                    <div class="subtitle"><a href="//goo.gl/tZnDm3" target="_blank">賣場專家揭密</a></div>' +
+      '                    <div class="title"><a href="//goo.gl/tZnDm3" target="_blank">廚房後場與料理流程才是關鍵</a></div>' +
+      '                  </li>' +
+      '            </ul>' +
+      '              </li>' +
+      '          <li class="set">' +
+      '                <ul class="page">' +
+      '              <li>' +          
+      '                    <div class="kind">【樂時尚】</div>' +
+      '                    <div class="subtitle"><a href="http://www.styletc.com/people/20181001002829-330302?utm_source=chinatimes&utm_medium=Sword_2" target="_blank">這身材誰受得了</a></div>' +
+      '                    <div class="title"><a href="http://www.styletc.com/people/20181001002829-330302?utm_source=chinatimes&utm_medium=Sword_2" target="_blank">3位「極品中的極品」IG辣模</a></div>' +
+      '                  </li>'+
+      '              <li>' +
+      '                    <div class="kind">【新生活提案】</div>' +
+      '                    <div class="subtitle"><a href="//lihi.cc/L2NPN" target="_blank">入門款海外置產On Nut</a></div>' +
+      '                    <div class="title"><a href="//lihi.cc/L2NPN" target="_blank">絕版入門款海外置產曼谷On Nut</a></div>' +
+      '                  </li>' +
+      '            </ul>' +
+      '              </li>' +
+      '          <li class="set">' +
+      '                <ul class="page">' +
+      '              <li>' +
+      '                    <div class="kind">【樂時尚】</div>' +
+      '                    <div class="subtitle"><a href="http://www.styletc.com/fitness/20161116005684-330204?utm_source=chinatimes&utm_medium=Sword_2" target="_blank">真心話老實說</a></div>' +
+      '                    <div class="title"><a href="http://www.styletc.com/fitness/20161116005684-330204?utm_source=chinatimes&utm_medium=Sword_2" target="_blank">女生「最性感部位」是這3個地方</a></div>' +
+      '                  </li>' +
+      '              <li>' +
+      '                    <div class="kind">【樂時尚】</div>' +
+      '                    <div class="subtitle"><a href="http://www.styletc.com/relationship/20171101005536-330601?utm_source=chinatimes&utm_medium=Sword_2" target="_blank">好女孩交不到男友</a></div>' +
+      '                    <div class="title"><a href="http://www.styletc.com/relationship/20171101005536-330601?utm_source=chinatimes&utm_medium=Sword_2" target="_blank">4個因素讓桃花運全都斷光光</a></div>' +
+      '                  </li>' +
+      '            </ul>' +
+      '              </li>' +
+      '        </ul>' +
+      '          </div>' +
+      '      <div class="ad-carousel-control">' +
+      '            <ul class="arrows">' +
+      '          <li class="prev">&lt;</li>' +
+      '          <li class="next">&gt;</li>' +
+      '        </ul>' +
+      '          </div>' +
+      '    </div>' +
+      '      </div>' +
+      (isNewVersion ? '' : '</section>');
+
+if (isNewVersion) {
+    $(".ad_carousel_box").html(cont);
+}
+else {
+    $(".nav-below").after(cont);
+}
+
+
+//document.write(cont);
+
+$(function () {
+    var $block = $('#ad-carousel'),
+        $slides = $block.find('ul.ad-carousel-list'),
+        _width = $block.width(),
+        $li = $slides.find('li.set'),
+        $control = $block.find('.ad-carousel-control'),
+        _animateSpeed = 600;
+    if (winWidth > 767) {
+        $slides.css('width', ($li.length + 1) * _width);
+    } else {
+        $slides.css('width', '100%');
+    }
+    var _str = '';
+    var _selectMum = Math.floor(Math.random() * $li.length);
+
+    for (var i = 0, j = $li.length; i < j; i++) {
+        _str += '<li class="carousel-player-control_' + (i + 1) + '">' + (i + 1) + '</li>';
+    }
+    var $number = $('<ul class="numbers"></ul>').html(_str).appendTo($control),
+        $numberLi = $number.find('li');
+    $numberLi.click(function () {
+        var $this = $(this);
+        $this.addClass('current').siblings('.current').removeClass('current');
+        $slides.stop().animate({
+            left: _width * $this.index() * -1
+        }, _animateSpeed);
+        return false;
+    }).eq(_selectMum).click();
+    $control.find('ul.arrows li').click(function () {
+        var _index = $numberLi.filter('.current').index();
+        $numberLi.eq((this.className.indexOf('next') > -1 ? _index + 1 : _index - 1 + $numberLi.length) % $numberLi.length).click();
+        return false;
+    });
+    $control.find('li').hover(function () {
+        $(this).addClass('hover');
+    }, function () {
+        $(this).removeClass('hover');
+    });
+})
+

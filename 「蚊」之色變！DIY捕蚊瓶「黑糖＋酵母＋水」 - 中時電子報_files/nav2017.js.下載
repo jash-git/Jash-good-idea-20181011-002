@@ -1,0 +1,359 @@
+﻿var sD = "//www.chinatimes.com";
+var cacheUrl = "//cache.chinatimes.com";
+var scturl = "";
+var contch = "";
+var contch2 = "";
+var contrwdh = "";
+var inavCheck = 0;
+var ctHeaderCh = [{ class: "chinatimes", sub: "n", rwd: "y", title: "中國時報", url: "/newspapers/2601", t: "" }, { class: "commercialtimes", sub: "n", rwd: "y", title: "工商時報", url: "http://www.ctee.com.tw", t: "_blank" },
+{ class: "wantdaily", sub: "n", rwd: "y", title: "旺報", url: "/newspapers/2603", t: "" }, { class: "ctweekly", sub: "y", rwd: "y", title: "時報周刊", url: "//ctweekly.chinatimes.com/", t: "" },
+{ class: "wantweekly", sub: "y", rwd: "y", title: "周刊王", url: "//wantweekly.chinatimes.com/", t: "" }, { class: "ctitv", sub: "n", rwd: "n", title: "中天電視", url: "http://www.ctitv.com.tw/", t: "" },
+{ class: "ctv", sub: "n", rwd: "n", title: "中國電視", url: "http://new.ctv.com.tw/", t: "" }, { class: "wantblogger", sub: "n", rwd: "n", title: "中旺電視", url: "https://www.wantblogger.com/", t: "_blank" }, { class: "lecoin", sub: "n", rwd: "n", title: "樂公益", url: "https://lecoin.cc/", t: "_blank" },
+{ class: "loveparents", sub: "n", rwd: "y", title: "孝親獎", url: "http://www.loveparents.org/", t: "_blank" }, { class: "timesawards", sub: "n", rwd: "n", title: "時報廣告金像獎", url: "http://www.timesawards.com/index.html", t: "_blank"}]
+var ctNavCh = [{ name: "realtimenews", sub: "y", eword: "n", title: "即時", url: "/realtimenews", t: "" }, { name: "vote2018", sub: "y", eword: "n", title: "選戰", url: "/vote2018/", t: "" }, { name: "politic", sub: "y", eword: "n", title: "政治", url: "/politic/", t: "" }, 
+{ name: "life", sub: "y", eword: "n", title: "生活", url: "/life/", t: "" }, { name: "star", sub: "y", eword: "n", title: "娛樂", url: "/star", t: "" }, { name: "hottopic", sub: "y", eword: "n", title: "話題", url: "//hottopic.chinatimes.com/", t: "" }, { name: "tube", sub: "y", eword: "n", title: "有影", url: "//tube.chinatimes.com/", t: "" },
+{ name: "society", sub: "y", eword: "n", title: "社會", url: "/society/", t: "" }, { name: "world", sub: "y", eword: "n", title: "國際", url: "/world", t: "" }, { name: "chinese", sub: "y", eword: "n", title: "兩岸", url: "/chinese", t: "" }, { name: "money", sub: "y", eword: "n", title: "財經", url: "/money/", t: "" },
+{ name: "album", sub: "y", eword: "n", title: "專輯", url: "//album.chinatimes.com/", t: "" }, { name: "opinion", sub: "y", eword: "n", title: "言論", url: "//opinion.chinatimes.com/", t: "" }, { name: "armament", sub: "y", eword: "n", title: "軍事", url: "/armament", t: "" }, { name: "travel", sub: "y", eword: "n", title: "玩食", url: "/travel/", t: "" },
+{ name: "sports", sub: "y", eword: "n", title: "體育", url: "/sports/", t: "" }, { name: "styletc", sub: "y", eword: "n", title: "樂時尚", url: "//styletc.chinatimes.com/", t: "" }, { name: "wantcar", sub: "y", eword: "n", title: "旺車", url: "//want-car.chinatimes.com/", t: "" },
+{ name: "gotvshopping", sub: "n", eword: "n", title: "快點購", url: "https://www.gotvshopping.com.tw?ori=e5d6d6aa", t: "_blank" }, { name: "more", sub: "n", eword: "n", title: "更多", url: "/syndication/robots", t: ""}]
+function rwdmenu() {
+    var ctrwdcss2 = "";
+    var ctrwdcss = $('#menulist').attr("class");
+    $(".search_view").hide();
+    if (ctrwdcss.indexOf(" on") > 0) ctrwdcss2 = ctrwdcss.replace(" on", "");
+    else ctrwdcss2 = ctrwdcss + " on";
+    $('#menulist').attr('class', ctrwdcss2);
+    if (ctrwdcss.indexOf(" on") < 0) {
+        if (inavCheck == 1) {
+            $("html, body").animate({ scrollTop: $('#menu_' + ctmid).offset().top }, "slow");
+        }
+    }
+}
+function rwdsearch() {
+    if ($(".search_view").css('display') == "none") { $(".search_view").show(); var ctrwdcss2 = "menulist clear-fix"; $('#menulist').attr('class', ctrwdcss2); }
+    else { $(".search_view").hide(); }
+}
+function tosetheadermenu() {
+    scturl = "//www.chinatimes.com/";
+    var conth = '<hgroup><h1 title="中時電子報"> <a href="' + GetUrl_Cn(scturl) + '">中時電子報</a></h1><h2> 優質豐富的新聞媒體</h2>';
+    conth = conth + '</hgroup><div class="top_menu"><ul class="clear-fix"><li><span id="idxlang"><a href="//www.chinatimes.com/" lang="zh" hreflang="zh-tw" onclick="javascript:TS_Switch_T();">繁</a></span></li>';
+    conth = conth + '<li class="lang clear-fix"><a href="//www.chinatimes.com/cn/" lang="zh" hreflang="zh-cn" onclick="javascript:TS_Switch_S();">簡</a></li>';
+    conth = conth + '<li class="sethomepage"><a onclick="this.style.behavior=\'url(#default#homepage)\';this.setHomePage(\'http://www.chinatimes.com/\');" href="javascript:;" title="設為首頁">設為首頁</a></li>';
+    conth = conth + '</ul></div> <div class="affiliates"><ul>';
+    for (var n_h = 0; n_h < ctHeaderCh.length; n_h++) {
+        scturl = ctHeaderCh[n_h]["url"];
+        if (scturl.indexOf("//") < 0) { scturl = sD + scturl; }
+        conth = conth + '<li class="' + ctHeaderCh[n_h]["class"] + '"><a href="' + GetUrl_Cn(scturl) + '" title="' + ctHeaderCh[n_h]["title"] + '" target="' + ctHeaderCh[n_h]["t"] + '">' + ctHeaderCh[n_h]["title"] + '</a></li>';
+    }
+    conth = conth + '</ul></div>';
+    $('#ctnavhead').html(conth);
+    $('#ctnavhead').attr('class', 'globehead stack new new2017');
+}
+function tosetheaderrwdmenu() {
+
+    for (var n_h = 0; n_h < ctHeaderCh.length; n_h++) {
+        scturl = ctHeaderCh[n_h]["url"];
+        if (scturl.indexOf("//") < 0) { scturl = sD + scturl; }
+        if (ctHeaderCh[n_h]["rwd"] == "y") {
+            if (ctHeaderCh[n_h]["sub"] == "y") {
+
+                contrwdh = contrwdh + '<li id="menu_' + ctHeaderCh[n_h]["class"] + '" class="menu ' + ctHeaderCh[n_h]["class"];
+                contrwdh = contrwdh + ' sub clear-fix';
+                contrwdh = contrwdh + '"><a class="icon" href="' + GetUrl_Cn(scturl) + '" title="' + ctHeaderCh[n_h]["title"] + '">' + ctHeaderCh[n_h]["title"] + '</a>';
+                contrwdh = contrwdh + '<div id="ctsub' + ctHeaderCh[n_h]["class"] + '" class="submenu ' + ctHeaderCh[n_h]["class"] + '_submenu"></div></li>';
+            }
+            else {
+
+                contrwdh = contrwdh + '<li id="menu_' + ctHeaderCh[n_h]["class"] + '" class="menu ' + ctHeaderCh[n_h]["class"] + ' nosub clear-fix';
+                contrwdh = contrwdh + '"><a class="icon" href="' + GetUrl_Cn(scturl) + '" title="' + ctHeaderCh[n_h]["title"] + '" target="' + ctHeaderCh[n_h]["t"] + '">' + ctHeaderCh[n_h]["title"] + '</a> </li>';
+            }
+        }
+        if (ctmid == ctHeaderCh[n_h]["class"] && ctHeaderCh[n_h]["sub"] == "y") { inavCheck = 1; }
+        else if (ctmid == ctHeaderCh[n_h]["class"] && ctHeaderCh[n_h]["sub"] == "n") { inavCheck = 2; }
+
+    }
+}
+function tosetwebmenu() {
+    var contw = '<ul class="main-menu clear-fix">';
+    for (var n_i = 0; n_i < ctNavCh.length; n_i++) {
+        scturl = ctNavCh[n_i]["url"];
+        if (scturl.indexOf("//") < 0) { scturl = sD + scturl; }
+        if (ctNavCh[n_i]["name"] == "taipeishanghai") { contw = contw + '<li id="menuw_' + ctNavCh[n_i]["name"] + '" class="' + ctNavCh[n_i]["name"] + ' new">'; }
+        else { contw = contw + '<li id="menuw_' + ctNavCh[n_i]["name"] + '" class="' + ctNavCh[n_i]["name"] + '">'; }
+
+        contw = contw + '<a href="' + GetUrl_Cn(scturl) + '" target="' + ctNavCh[n_i]["t"] + '">' + ctNavCh[n_i]["title"] + '</a></li>';
+        if (n_i == 11) { contw = contw + '</ul><ul class="main-menu clear-fix">'; }
+    }
+    contw = contw + '<li class="history-news"><a href="javascript:;"><span class="title">新聞庫</span><i class="fa fa-calendar" aria-hidden="true"></i>';
+    contw = contw + '<input type="text" id="history-news-datepicker">';
+    contw = contw + ' </a></li></ul><div class="search"><div class="search-box"><input type="text" id="txtsearch2" name="txtsearch2" onkeypress="return clickButtonW(event)" class="input-text">';
+    contw = contw + '<span class="btn-submit" onclick="javascript:redirsearch2();"><i class="fa fa-search" aria-hidden="true"></i></span> </div></div>';
+    $('#ctnav2').html(contw);
+    $("#ctnav2").attr('class', 'main-nav');
+    $(document).ready(function () {
+        $("#history-news-datepicker").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            //showOn: "button",
+            buttonImage: "//cache.chinatimes.com/images/space.png",
+            buttonImageOnly: true,
+            minDate: new Date(2009, 8, 28), //最小可選日期
+            maxDate: -1,
+            dateFormat: 'yy-mm-dd',
+            buttonText: '歷史新聞',
+            onSelect: pickDate
+        });
+    });
+
+}
+function clickButtonW(e) {
+    if (navigator.appName.indexOf("Netscape") > (-1)) {
+        if (e.keyCode == 13) {
+            redirsearch2();
+            return false;
+        }
+    }
+    if (navigator.appName.indexOf("Microsoft Internet Explorer") > (-1)) {
+        if (event.keyCode == 13) {
+            redirsearch2();
+            return false;
+        }
+    }
+}
+function tosetrwdmenuclick() {
+
+    var ctrwdid = "";
+    var ctrwdfid = "";
+
+    for (var n_i = 0; n_i < ctNavCh.length; n_i++) {
+        ctrwdid = ctNavCh[n_i]["name"];
+        ctrwdfid = "#menu_" + ctrwdid;
+
+        if (ctNavCh[n_i]["sub"] == "y") {
+            if ($(ctrwdfid).children("a").attr('href2') == undefined) $(ctrwdfid).children("a").attr('href2', $(ctrwdfid).children("a").attr('href'));
+            $(ctrwdfid).children("a").removeAttr('href');
+            $(ctrwdfid).children("a").click(function () {
+
+                ToChangeRwdMenu($(this));
+            })
+        }
+    }
+    for (var n_h = 0; n_h < ctHeaderCh.length; n_h++) {
+        ctrwdid = ctHeaderCh[n_h]["class"];
+        ctrwdfid = "#menu_" + ctrwdid;
+
+        if (ctHeaderCh[n_h]["sub"] == "y") {
+            if ($(ctrwdfid).children("a").attr('href2') == undefined) $(ctrwdfid).children("a").attr('href2', $(ctrwdfid).children("a").attr('href'));
+            $(ctrwdfid).children("a").removeAttr('href');
+            $(ctrwdfid).children("a").click(function () {
+
+                ToChangeRwdMenu($(this));
+            })
+        }
+    }
+}
+function ToChangeRwdMenu(obj) {
+    var isRWD2 = $(window).width() < 768;
+    if (isRWD2) { if (window.location.href.toLowerCase() == baseUrl) { if ($.cookie("ctMSet") != null) { if ($.cookie("ctMSet") == "p") { isRWD2 = false; } } } }
+    if (isRWD2) {
+        var ctrwdid = "";
+        var ctrwdfid = "";
+        var ctrwdfcss = "";
+        var ctrwdsub = "";
+        var ctrwdfidnow = "#" + obj.parent().attr('id');
+        for (var n_i = 0; n_i < ctNavCh.length; n_i++) {
+            ctrwdid = ctNavCh[n_i]["name"];
+            ctrwdsub = ctNavCh[n_i]["sub"];
+            ctrwdfid = "#menu_" + ctrwdid;
+
+            if (ctrwdsub == "y" && ctrwdfid != ctrwdfidnow) {
+
+               if (ctNavCh[n_i]["name"] == "taipeishanghai") ctrwdfcss = "menu " + ctrwdid + " sub clear-fix new";
+               else ctrwdfcss = "menu " + ctrwdid + " sub clear-fix";
+               $(ctrwdfid).attr('class', ctrwdfcss);
+            }
+        }
+        var ctrwdcss2 = "";
+        var ctrwdcss = obj.parent().attr("class");
+        if (ctrwdcss.indexOf(" on") > 0) ctrwdcss2 = ctrwdcss.replace(" on", "");
+        else ctrwdcss2 = ctrwdcss + " on";
+        obj.parent().attr('class', ctrwdcss2);
+    }
+    else {
+        if (obj.attr('href2') != undefined) { window.location.href = obj.attr('href2') };
+    }
+}
+tosetheadermenu();
+var cont =
+'<div id="rwdmenuicon" class="rwdmenuicon" onclick="javascript:rwdmenu();"><i class="fa fa-bars fa-2x"></i></div>' +
+'    <div class="rwdsearchicon"  onclick="javascript:rwdsearch();"><i class="fa fa-search fa-2x"></i></div>' +
+'    <div id="menulist" class="menulist clear-fix"><ul>';
+for (var n_i = 0; n_i < ctNavCh.length; n_i++) {
+    scturl = ctNavCh[n_i]["url"];
+    if (scturl.indexOf("//") < 0) { scturl = sD + scturl; }
+
+
+    if (ctNavCh[n_i]["name"] == "more") { tosetheaderrwdmenu(); cont = cont + contrwdh; }
+
+    if (ctNavCh[n_i]["sub"] == "y") {
+        cont = cont + '<li id="menu_' + ctNavCh[n_i]["name"] + '" class="menu ' + ctNavCh[n_i]["name"] + ' sub clear-fix';
+        if (ctNavCh[n_i]["eword"] == "y") { cont = cont + ' eword'; }
+        if (ctNavCh[n_i]["name"] == "taipeishanghai") { cont = cont + ' new'; }
+        cont = cont + '"><a class="icon" href="' + GetUrl_Cn(scturl) + '" title="' + ctNavCh[n_i]["title"] + '">' + ctNavCh[n_i]["title"] + '</a>';
+        cont = cont + '<div id="ctsub' + ctNavCh[n_i]["name"] + '" class="submenu ' + ctNavCh[n_i]["name"] + '_submenu"></div></li>';
+    }
+    else {
+        scturl = ctNavCh[n_i]["url"];
+        if (scturl.indexOf("//") < 0) { scturl = sD + scturl; }
+        cont = cont + '<li id="menu_' + ctNavCh[n_i]["name"] + '" class="menu ' + ctNavCh[n_i]["name"] + ' nosub clear-fix';
+        if (ctNavCh[n_i]["eword"] == "y") { cont = cont + ' eword'; }
+        cont = cont + '"><a class="icon" href="' + GetUrl_Cn(scturl) + '" title="' + ctNavCh[n_i]["title"] + '" target="' + ctNavCh[n_i]["t"] + '">' + ctNavCh[n_i]["title"] + '</a> </li>';
+    }
+
+    if (ctmid == ctNavCh[n_i]["name"] && ctNavCh[n_i]["sub"] == "y") { inavCheck = 1; }
+    else if (ctmid == ctNavCh[n_i]["name"] && ctNavCh[n_i]["sub"] == "n") { inavCheck = 2; }
+}
+cont = cont + ' </ul></div><div class="search clear-fix"> <a href="javascript:;" onclick="javascript:redirsearch();" title="搜尋"><span>搜尋</span></a>' +
+'      <div class="search_view">' +
+'        <div class="search_pos clear-fix">' +
+'          <div class="input-container">' +
+'            <input type="text" onkeypress="return clickButton(event,\'btnsearch\')" size="100" class="text-input" id="txtsearch" name="txtsearch">' +
+'            <div class="input-clear"> </div></div>' +
+'          <input type="button" onclick="javascript:redirsearch();" class="submit" value="搜尋" id="btnsearch">' +
+'          <span class="cancel">X</span> </div>' +
+'      </div></div>';
+var cont2 = "";
+var ctsub = "";
+var ctsub2 = "";
+var ctarget = "";
+var ctcss = "";
+if (ctmid == "") { ctsub = " nosub"; if (ctwebsub == "y") { ctsub2 = "_ctwebsub" } else { ctsub2 = "_noctwebsub" } }
+
+if (typeof (AryNavUrl) != "undefined") {
+    var cont2 = '<div class="more-rwd-menu clear-fix"><div class="menubox clear-fix"> <span id="menu-ico" class="menu-ico"><i class="fa fa-bars fa-2x"></i></span> ' +
+  '<span class="channel-name">' + AryNavUrl[0].cweb + '</span> <span class="cti-ico">' +
+  '<a href="' + GetUrl_Cn(sD) + '/" target="_blank"><img src="//cache.chinatimes.com/images/cti-logo-3232.gif"></a></span> </div>' +
+  '<div class="submenu guiz clear-fix"><ul>';
+    contch2 = '<ul class="clear-fix">';
+
+    for (var N_i = 1; N_i < AryNavUrl.length; N_i++) {
+        ctarget = "";
+        try {
+            ctarget = AryNavUrl[N_i].ctarget;
+        } catch (e) { }
+        if (ctarget == "") { ctarget = "_self"; }
+        if (typeof (ctarget) == "undefined") { ctarget = "_self"; }
+        cont2 = cont2 + '<li><a href="' + GetUrl_Cn(AryNavUrl[N_i].curl) + '" target="' + ctarget + '">' + AryNavUrl[N_i].cweb + '</a></li>';
+        contch2 = contch2 + '<li><a href="' + GetUrl_Cn(AryNavUrl[N_i].curl) + '" target="' + ctarget + '">' + AryNavUrl[N_i].cweb + '</a></li>';
+    }
+    cont2 = cont2 + '</ul></div></div>';
+    contch2 = contch2 + '</ul>';
+
+    $('#ctrwdnav').html(cont2);
+    if ($(window).width() >= 768) {
+        $('#ctnavsub').html(contch2);
+        $("#ctnavsub").attr('class', 'submenu ' + ctmid + '_submenu');
+
+
+    }
+}
+function CategoryLinksCallBack(smenuid, data) {
+    contch = '<ul class="clear-fix">';
+    contch2 = '<ul class="clear-fix">';
+
+    $.each(data.CategoryLinks, function () {
+        scturl = this.href;
+        if (scturl.indexOf("//") < 0) { scturl = sD + scturl; }
+        ctarget = "";
+        try {
+            ctarget = this.target;
+        } catch (e) { }
+        if (ctarget == "" || typeof (ctarget) == "undefined") { ctarget = "_self"; }
+        ctcss = "";
+        try {
+            ctcss = this.css;
+        } catch (e) { }
+        if (ctcss == "" || typeof (ctcss) == "undefined") { ctcss = ""; }
+        contch = contch + '<li';
+        if (ctcss != "") contch = contch + ' class="' + ctcss + '"';
+        contch = contch + '><a href="' + GetUrl_Cn(scturl) + '" target="' + ctarget + '">' + this.value + '</a></li>';
+        contch2 = contch2 + '<li';
+        if (ctcss != "") contch2 = contch2 + ' class="' + ctcss + '"';
+        contch2 = contch2 + '><a href="' + GetUrl_Cn(scturl) + '" target="' + ctarget + '">' + this.value + '</a></li>';
+
+
+    })
+    contch = contch + '</ul>';
+    contch2 = contch2 + '</ul>';
+    $('#ctsub' + smenuid).html(contch);
+    if (inavCheck == 1) {
+        if ($(window).width() >= 768) {
+            $('#ctnavsub').html(contch2);
+            if (smenuid == "taipeishanghai") { $('#menuw_' + smenuid).attr('class', smenuid + ' new on'); }
+            else { $('#menuw_' + smenuid).attr('class', smenuid + ' on'); }
+            $("#ctnavsub").attr('class', 'submenu ' + smenuid + '_submenu');
+
+        }
+        else {
+            if (inavCheck == 1) {
+                if (ctmid == "taipeishanghai") { $('#menu_' + ctmid).attr('class', 'menu ' + ctmid + ' sub clear-fix on new'); }
+              	else{ $('#menu_' + ctmid).attr('class', 'menu ' + ctmid + ' sub clear-fix on'); }
+            }
+        }
+    }
+}
+$("#ctnav").attr('class', 'newmenu stack idx');
+$('#ctnav').html(cont);
+var sD2 = cacheUrl.replace("/cn", "");
+if ($(window).width() < 768) {
+    tosetrwdmenuclick();
+    $.getScript(sD2 + '/scripts/category-link-all.js?20180918');
+}
+else {
+    tosetwebmenu();
+    if (inavCheck == 1) {
+        $.getScript(sD2 + '/scripts/category-link-' + ctmid + '.js?20180918');
+    }
+    else if (inavCheck == 2) {
+        if ($(window).width() >= 768) {
+            $('#menu_' + ctmid).attr('class', 'menu ' + ctmid + ' sub clear-fix on');
+
+        }
+    }
+}
+$(function () {
+    $.datepicker.regional['zh-TW'] = {
+        clearText: '清除',
+        clearStatus: '清除已選日期',
+        closeText: '關閉',
+        closeStatus: '取消選擇',
+        prevText: '<上一月',
+        prevStatus: '顯示上個月',
+        nextText: '下一月>',
+        nextStatus: '顯示下個月',
+        currentText: '今天',
+        currentStatus: '顯示本月',
+        monthNames: ['一月', '二月', '三月', '四月', '五月', '六月',
+          '七月', '八月', '九月', '十月', '十一月', '十二月'
+      ],
+        monthNamesShort: ['一月', '二月', '三月', '四月', '五月', '六月',
+          '七月', '八月', '九月', '十月', '十一月', '十二月'
+      ],
+        monthStatus: '選擇月份',
+        yearStatus: '選擇年份',
+        weekHeader: '周',
+        weekStatus: '',
+        dayNames: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
+        dayNamesShort: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
+        dayNamesMin: ['日', '一', '二', '三', '四', '五', '六'],
+        dayStatus: '設定每周第一天',
+        dateStatus: '選擇 m月 d日, DD',
+        dateFormat: 'yy-mm-dd',
+        firstDay: 1,
+        initStatus: '請選擇日期',
+        isRTL: false
+    };
+    $("#history-news-datepicker").datepicker();
+    $.datepicker.setDefaults($.datepicker.regional['zh-TW']);
+
+});

@@ -1,0 +1,48 @@
+﻿.bg 
+{
+    /*position: absolute;*/
+    position: fixed;
+    z-index: 10000010;
+    background-color: transparent; /*rgba(0, 0, 0, 0.5);*/
+    height: 100%;
+    width: 200%;
+    min-height:1280px;
+    top: 0;
+    left: 0;
+}
+.adarea 
+{
+    position:absolute;
+    z-index:100000050;
+    /*border:1px solid red;*/
+    width:320px;
+    /*height:480px;*/
+    display: table;         
+    /*display:none;*/    
+}
+.adkeep 
+{
+    width:320px;
+    /*height:563px;*/
+    /*border:1px solid red;*/
+}
+
+.close 
+{
+    position:absolute;
+    z-index:100000060;
+    /*border:1px solid red;*/
+    width:70px;
+    height:70px;
+    top:0px;
+    right:0px; 
+    cursor: pointer;    
+    background-size: 50px 50px;
+    background-image: url(//pagead.chinatimes.com/images/close.png);
+    opacity:0.5;
+    background-repeat: no-repeat; 
+    background-position: center center;
+    background-color: rgba(0, 0, 0, 0.01);
+    color: transparent;
+}
+

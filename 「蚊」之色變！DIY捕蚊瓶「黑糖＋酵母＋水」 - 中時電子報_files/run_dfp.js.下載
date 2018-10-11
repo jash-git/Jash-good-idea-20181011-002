@@ -1,0 +1,287 @@
+﻿var pagead_dragarea_object;
+var pagead_adarea_object;
+var pagead_adkeep_object;
+var pagead_close_object;
+var pagead_adimage_object;
+var pagead_href_object;
+var cookie_name = "info" + ad_location;
+//var pagead_container_object = $("#divSlot");
+var pagead_bg_object = $("#divPagead_bg");
+var player;
+var pagead_control_object;
+var pagead_soundstate_object;
+var pagead_adgif_object;
+var pagead_adgif;
+var intId;
+var adWidth = 320;
+jQuery.fn.center = function(thisWidth) {
+    this.css("position", "absolute");
+    //this.css("top", Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) +
+    //                                            $(window).scrollTop()) + "px");
+    //this.css("top", $(window).scrollTop() + "px");
+    this.css("top", "0px");
+    //this.css("left", Math.max(0, (($(window).width() - $(this).outerWidth()) / 2) +
+    //                                            $(window).scrollLeft()) + "px");
+    this.css("left", Math.max(0, (($(window).width() - thisWidth) / 2) +
+        $(window).scrollLeft()) + "px");
+    return this;
+}
+
+function pagead_isMobile() {
+    console.log($(window).width());
+    if ($(window).width() <= 768) {
+        return true;
+    }
+    return false;
+}
+
+function pagead_cookieExists() {
+    console.log("cookie", "==" + $.cookie(cookie_name) + "==");
+    if ($.cookie(cookie_name) == "1") {
+        return true;
+    }
+    return false;
+}
+
+function pagead_initAD() {
+    //pagead_container_object.hide();
+    if (pagead_bg_object.attr("id") == null) {
+        pagead_bg_object = $("#div_pagead_bg");
+    }
+    pagead_bg_object.hide();
+    var html = "";
+    //html += '<div id="div_pagead_bg" class="bg">';
+    html += '       <div id="div_pagead_adarea" class="adarea">';
+    html += '          <div id="div_pagead_close" class="close">';
+    //html += '              <img src="http://pagead.chinatimes.com/images/close.png" style="width:100%;height:100%" />';
+    html += '          </div>';
+    html += '          <div id="div_pagead_adkeep" class="adkeep">';
+    html += '		   		<div id="' + dfp_div_name + '"></div>';
+    html += '          </div>';
+    html += '       </div>';
+    //html += '</div>';
+
+    //pagead_container_object.html(html);
+    pagead_bg_object.html(html);
+
+    pagead_adarea_object = $("#div_pagead_adarea");
+    pagead_adkeep_object = $("#div_pagead_adkeep");
+    pagead_close_object = $("#div_pagead_close");
+
+    pagead_close_object.hide();
+    pagead_close_object.bind("click", function(e) {
+        pagead_bg_object.remove();
+        pagead_sendmessageTomobile("close");
+    });
+    pagead_initPosition();
+}
+
+function pagead_initPosition() {
+    //pagead_dragarea_object.center(adWidth);
+    //pagead_dragarea_object.draggable(adWidth);
+    pagead_adarea_object.center(adWidth);
+
+    //$(pagead_adarea_object).draggable(adWidth);
+}
+
+function pagead_setCookie() {
+    try {
+        var AD_Date = new Date();
+        AD_Date.setTime(AD_Date.getTime() + (1000 * 60 * 60 * 1));
+        $.cookie(cookie_name, '1', {
+            path: '/',
+            expires: AD_Date
+        });
+        console.log("cookie is done");
+    } catch (e) {
+        console.log(e.message);
+    }
+}
+
+function pagead_playVideo() {
+    console.log(pagead_soundstate_object.css("display"));
+    pagead_adgif_object.css("display", "none");
+    if (pagead_soundstate_object.css("display") != "none") {
+        pagead_soundstate_object.css("display", "none");
+        player = videojs('player');
+        player.play();
+    } else {
+        pagead_soundstate_object.css("display", "");
+        player = videojs('player');
+        player.pause();
+    }
+
+
+}
+
+function pagead_loadAD() {
+    console.log("start");
+    pagead_initAD();
+    //pagead_href_object.attr("href", click_url);
+
+    //pagead_adgif.bind("load", function ()
+    //{    
+    $(window).bind("resize", function() {
+        pagead_initPosition();
+    });
+    $(document).bind("scroll", function() {
+        pagead_initPosition();
+    });
+    /*
+    pagead_control_object.bind("click", function ()
+    {
+        //alert("in");
+        //console.log("in");
+        pagead_playVideo();
+    });
+	*/
+    console.log("dfp_div_name=" + dfp_div_name);
+    googletag.cmd.push(function() {
+        googletag.display(dfp_div_name);
+        googletag.pubads().addEventListener('slotRenderEnded', function(event) {
+            console.log("listening [slotRenderEnded]");
+            if (!event.isEmpty) {
+                //console.log(event.slot.getSlotElementId() + "==" + dfp_div_name);
+                console.log("dfp_div_name                 =" + dfp_div_name);
+                console.log("event.slot.getSlotElementId()=" + event.slot.getSlotElementId());
+                if (event.slot.getSlotElementId() == dfp_div_name) {
+                    console.log("element matchs!");
+                    console.log("start");
+                    var SlotId = event.slot.getSlotId().toString();
+                    console.log("finding SlotId=" + SlotId);
+
+                    for (var id in event.slot) {
+                        console.log("id=" + id);
+                        if (event.slot[id] != null) {
+                            var idPos = -1;
+                            try {
+                                idPos = event.slot[id].toString().indexOf(SlotId);
+                                //console.log("idPos=" + idPos);
+                                if (idPos != -1) {
+                                    console.log("idPos=" + idPos);
+                                    console.log("SlotId                   =" + SlotId);
+                                    console.log("event.slot[id].toString()=" + event.slot[id].toString());
+                                    try {
+                                        console.log("finding iframes");
+                                        var iframes = $("#" + dfp_div_name).find('iframe');
+                                        console.log("iframes.length=" + iframes.length);
+                                        $(iframes).each(function() {
+                                            var this_iframe = $(this);
+                                            console.log("this_iframe.width()=" + this_iframe.width());
+                                            var the_width = this_iframe.width();
+                                            if (the_width >= 100) {
+                                                console.log('loading');
+                                                pagead_adarea_object.css("width", the_width + "px");
+                                                pagead_adkeep_object.css("width", the_width + "px");
+                                                //setClosePos();
+                                                //$("#divClose").unbind("click").bind("click", function () { setClose(); });
+                                                //$('#divBG').show();                                                
+                                                pagead_bg_object.show();
+                                                pagead_sendmessageTomobile("show");
+                                                pagead_setCookie();
+                                                console.log('loaded');
+                                                var close_wait_milliseconds = 1000;
+                                                try {
+                                                    close_wait_milliseconds = close_wait_seconds * 1000;
+                                                    if (close_wait_milliseconds <= 0) {
+                                                        close_wait_milliseconds = 1;
+                                                    }
+                                                } catch (e) {
+                                                    console.log(e.message);
+                                                }
+
+                                                setTimeout(function() {
+                                                    pagead_close_object.show();
+                                                }, close_wait_milliseconds);
+                                                console.log("timeing start after->" + close_wait_milliseconds + " milliseconds");
+
+
+                                                //return;
+                                            }
+                                        });
+                                    } catch (e) {
+                                        console.log("msg=" + e.message);
+                                    }
+                                    break;
+                                }
+                            } catch (e) {
+                                console.log("msg=" + e.message);
+                            }
+
+                        }
+                    }
+
+                }
+            }
+
+        });
+    });
+    console.log("end");
+    //});
+    //pagead_adgif.attr("src", gif_src);    
+}
+
+function pagead_sendmessageTomobile(mobile_message) {
+    try {
+        if (isMobileOnControl != null) {
+            sendMessageToIOS(mobile_message);
+            sendMessageToAndroid(mobile_message);
+            $("#txtFlag").val(mobile_message);
+            if (mobile_message.toLowerCase() == "close") {
+                window.location.href = "./adclose.html";
+            }
+            console.log("sendmssageTomobile=" + mobile_message);
+        }
+    } catch (e) {
+        console.log(e.message)
+    }
+}
+/*
+function pagead_forceShowing() {
+    console.log("location="+window.location);
+    var params = window.location.search.replace("?", "").split('&');
+    var forceshowing = false;
+    for (var i = 0; i < params.length; i++) {
+        if (params[i].indexOf("forceshowing") != -1) {
+            var data = params[i].split('=');
+            forceshowing = data[1];
+            try {
+                if (forceshowing == "true") {
+                    return true;
+                } else {
+                    return false;
+                }
+
+            } catch (e) {
+                console.log(e.message);
+                return false;
+            }
+        }
+    }
+}
+*/
+function pagead_run() {
+    var result_isMobile = pagead_isMobile();
+    console.log("result_isMobile", result_isMobile);
+    if (result_isMobile == false) {
+        pagead_sendmessageTomobile("hide");
+    } else {
+        var result_cookieExists = pagead_cookieExists();
+        console.log("result_cookieExists", result_cookieExists);
+        try {
+            if (keep_showing == true) {
+                result_cookieExists = false;
+                console.log("keep_showing",keep_showing);
+            }
+        } catch (e) {
+            console.log(e.message);
+        }        
+        if (result_cookieExists == false) {
+            pagead_loadAD();
+            pagead_sendmessageTomobile("show");
+        } else {
+            pagead_sendmessageTomobile("hide");
+        }
+    }
+}
+pagead_run();

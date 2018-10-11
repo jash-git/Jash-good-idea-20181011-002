@@ -1,0 +1,33 @@
+﻿
+                    var AryWater = new Array();
+                    function ctwater(ccat, cimage, curl, csize) { this.ccat = ccat; this.cimage = cimage; this.curl = curl;  this.csize = csize;}
+                    function addwater(ccat, cimage, curl, csize) { AryWater.push(new ctwater(ccat, cimage, curl, csize)); }
+                addwater('26002418','https://img.chinatimes.com/newsphoto/2018-05-10/Miscellaneous/wad20180510002371636615421472549451.gif','http://www.loveparents.org/Default/BreakingNews','ad120240');
+
+
+                 function caldate() {
+                	
+                	var ctwatcid="";
+					var sWaterImg = "";
+        			var sWaterUrl = "";
+                    var sWaterCss="";
+                    var sWaterShow="";
+                    var ctwn=1;
+                	for (var ctwi = 0; ctwi < AryWater.length; ctwi++) {
+										if(ctWaterId==AryWater[ctwi].ccat){
+										sWaterImg=AryWater[ctwi].cimage;
+										sWaterUrl=AryWater[ctwi].curl;
+                                        sWaterCss=AryWater[ctwi].csize;
+                                        if(ctwn==2) {sWaterCss="ad120160";}
+                                        sWaterShow = sWaterShow + '<a target="_blank" class="'+sWaterCss+'" rel="nofollow" href="' + sWaterUrl + '">';
+                                        sWaterShow = sWaterShow + '<img src="' + sWaterImg + '"></a>';
+                                        ctwn=ctwn+1;
+									}
+									}
+                	
+       
+      
+        $('#watermark').html(sWaterShow);
+         }
+    caldate();
+                
